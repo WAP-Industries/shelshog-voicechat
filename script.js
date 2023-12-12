@@ -9,7 +9,7 @@
 // ==/UserScript==
 
 (function() {
-    let CanRecord = true,
+    let CanRecord = false,
         HideStatus = null
 
     const DisplayMessage = (Div, Text)=> Div.innerHTML = `<p><b>${Text}</b></p>`
