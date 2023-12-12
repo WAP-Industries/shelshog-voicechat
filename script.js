@@ -11,6 +11,14 @@
 (function() {
     'use strict';
 
+    const Buzzwords = function(){
+        const Words = {
+            "n*****": "nigger",
+            "f***": "fuck"
+        }
+        return Words
+    }()
+
     const Alpha = function(){
         const Upper = Array(26).fill(1).map((_, i)=>String.fromCharCode(65+i)),
             Lower = Upper.map(i=>i.toLowerCase())
@@ -21,15 +29,6 @@
         Lower: ['𝐚','𝐛','𝐜','𝐝','𝐞','𝐟','𝐠','𝐡','𝐢','𝐣','𝐤','𝐥','𝐦','𝐧','𝐨','𝐩','𝐪','𝐫','𝐬','𝐭','𝐮','𝐯','𝐰','𝐱','𝐲','𝐳'],
         Upper: ['𝐀','𝐁','𝐂','𝐃','𝐄','𝐅','𝐆','𝐇','𝐈','𝐉','𝐊','𝐋','𝐌','𝐍','𝐎','𝐏','𝐐','𝐑','𝐒','𝐓','𝐔','𝐕','𝐖','𝐗','𝐘','𝐙']
     }
-
-    const Buzzwords = function(){
-        const Words = {
-            "n*****": "nigger",
-            "f***": "fuck"
-        }
-        return Words
-    }()
-
 
     function GetText(Text){
         Object.keys(Buzzwords).forEach(i=>
