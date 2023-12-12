@@ -49,33 +49,35 @@
         return Text.join('')
     }
 
-    window.onload = ()=>{
-        if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
-            const Client = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-            Client.lang = 'en-US';
-            Client.interimResults = false
+    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+        alert("shelshog voicechat started")
+        
+        const Client = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        Client.lang = 'en-US';
+        Client.interimResults = false
+        Client.continuous = true
+        Client.maxAlternatives = 1
 
-            Client.start()
-            Client.onresult = (event) => {
-                const Div = document.querySelector(".chat-container")?.childNodes[2]
-                if (!Div) return
-                
-                Div.click()
-                Div.value = GetText(event.results[0][0].transcript.toLowerCase())
-                Div.dispatchEvent(new KeyboardEvent('keydown', {
-                    key: 'Enter',
-                    keyCode: 13,
-                    which: 13,
-                    bubbles: true,
-                    cancelable: true,
-                }))
-            };
-            Client.onend = ()=>{
-                Client.start()
-            }
+        Client.start()
+
+        Client.onresult = (event) => {
+            const Div = document.querySelector(".chat-container")?.childNodes[2]
+            if (!Div) return
+            
+            Div.click()
+            Div.value = GetText(event.results[event.results.length-1][0].transcript.toLowerCase())
+            Div.dispatchEvent(new KeyboardEvent('keydown', {
+                key: 'Enter',
+                keyCode: 13,
+                which: 13,
+                bubbles: true,
+                cancelable: true,
+            }))
         }
-        else
-            alert('Speech recognition not supported')
+        
+        Client.onend = ()=> Client.start()
     }
+    else
+        alert('shelshog voicechat not supported')
 
 })();
