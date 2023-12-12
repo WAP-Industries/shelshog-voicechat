@@ -8,4 +8,4 @@
 2. Create a new Tampermonkey userscript
 3. Copy paste the contents of `script.js` into the userscript
 4. Enable Tampermonkey and run the userscript
-5. When you open shellshock.io, the script should automatically run
+5. When you open [Shell Shockers](https://shellshock.io/), the script should automatically run
