@@ -78,7 +78,6 @@
         "c****": "cunts",
         "c******": "cumshot",
         "f**": "fag",
-        "f*****": "faggots",
         "f***": "fuck",
         "f****": "fucks",
         "f*****": "fucker",
