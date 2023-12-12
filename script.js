@@ -11,14 +11,6 @@
 (function() {
     'use strict';
 
-    const Buzzwords = function(){
-        const Words = {
-            "n*****": "nigger",
-            "f***": "fuck"
-        }
-        return Words
-    }()
-
     const Alpha = function(){
         const Upper = Array(26).fill(1).map((_, i)=>String.fromCharCode(65+i)),
             Lower = Upper.map(i=>i.toLowerCase())
@@ -31,7 +23,7 @@
     }
 
     function GetText(Text){
-        Object.keys(Buzzwords).forEach(i=>Text = Text.replace(i, Buzzwords[i]))
+        Object.keys(Buzzwords).sort().reverse().forEach(i=>Text = Text.replace(i, Buzzwords[i]))
 
         Text = Text.split("")
         for (let i=0;i<Text.length;i++){
@@ -73,5 +65,40 @@
     }
     else
         alert('shelshog voicechat not supported')
+
+    const Buzzwords = {
+        "a******": "asshole",
+        "a*******": "assholes",
+        "b****": "bitch",
+        "b******": "bitches",
+        "b*******": "bitching",
+        "b*******": "bullshit",
+        "b***********": "bullshitting",
+        "c***": "cunt",
+        "c****": "cunts",
+        "c******": "cumshot",
+        "f***": "fuck",
+        "f****": "fucks",
+        "f**": "fag",
+        "f*****": "faggots",
+        "f******": "fucking",
+        "f**********": "fistfucking",
+        "f***********": "fistfucking",
+        "f************": "fingerfucking",
+        "g*******": "gangbang",
+        "g********": "gangbangs",
+        "g*********": "gangbanged",
+        "n****": "nigga",
+        "n*****": "nigger",
+        "n******": "niggers",
+        "p****": "pussy",
+        "p******": "pussies",
+        "p******": "pornhub",
+        "p**********": "pornography",
+        "s***": "shit",
+        "s****": "shits",
+        "s*******": "shitting",
+        "w****": "whore",
+    }
 
 })();
