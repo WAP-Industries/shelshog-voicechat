@@ -61,15 +61,17 @@
         }]
     }
 
-    KeyBindings["h"][1]()
-    Array(Help, Status).forEach(i=>document.body.appendChild(i))
-
-    window.addEventListener("keyup", (e)=>{
-        const Key = e.key.toLowerCase()
-        if (Object.keys(KeyBindings).includes(Key)){
-            KeyBindings[Key][1]()
-        }
-    })
+    function Init(){
+        KeyBindings["h"][1]()
+        Array(Help, Status).forEach(i=>document.body.appendChild(i))
+    
+        window.addEventListener("keyup", (e)=>{
+            const Key = e.key.toLowerCase()
+            if (Object.keys(KeyBindings).includes(Key)){
+                KeyBindings[Key][1]()
+            }
+        })
+    }
 
 
 
@@ -85,7 +87,7 @@
     }
 
     function GetText(Text){
-        Object.keys(Buzzwords).sort().reverse().forEach(i=>Text = Text.replace(i, Buzzwords[i]))
+        Object.keys(Buzzwords).sort().reverse().forEach(i=>Text = Text.replaceAll(i, Buzzwords[i]))
 
         Text = Text.split("")
         for (let i=0;i<Text.length;i++){
@@ -99,6 +101,7 @@
 
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
         alert("shelshog voicechat started")
+        Init()
 
         const Client = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
         Client.lang = 'en-US';
