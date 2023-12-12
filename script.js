@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         ShellShock Voicechat
+// @name         shelshog voicechat
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  the shell do be shocking
@@ -31,9 +31,7 @@
     }
 
     function GetText(Text){
-        Object.keys(Buzzwords).forEach(i=>
-            Text = Text.replace(i, Buzzwords[i])
-        )
+        Object.keys(Buzzwords).forEach(i=>Text = Text.replace(i, Buzzwords[i]))
 
         Text = Text.split("")
         for (let i=0;i<Text.length;i++){
