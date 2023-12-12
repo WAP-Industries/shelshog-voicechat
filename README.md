@@ -13,9 +13,9 @@
 
 ### [swearingiscool.py](https://github.com/WAP-Industries/shelshog-voicechat/blob/main/swearingiscool.py)
 If you're wondering why there's a bigass dictionary of buzzwords `script.js`, that's where `swearingiscool.py` comes in.  
-JavaScript's built-in speech recognition api is fucking gay, so it censors shit like "nigger" and "faggot".  
+JavaScript's built-in speech recognition api is fucking gay, so it censors shit like "nigger" and "cunt".  
 So the solution was:
-- Take Roblox's buzzword file and decrypted it with `swearingiscool.py`, then modified it a lil bit
+- Take Roblox's buzzword file and decrypt it with `swearingiscool.py`, then modified it a lil bit
 - Then when converting the speech recognition output, then just freestyle the replacement
 ---
 
