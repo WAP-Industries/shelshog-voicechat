@@ -2,7 +2,7 @@
 // @name         ShellShock Voicechat
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  omg shokam
+// @description  the shell do be shocking
 // @author       WAP Industries
 // @match        https://shellshock.io/
 // @grant        none
