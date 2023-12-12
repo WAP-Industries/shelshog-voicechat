@@ -12,9 +12,9 @@
     'use strict';
 
     const Alpha = function(){
-        const Upper = Array(26).fill(1).map((_, i)=>String.fromCharCode(65+i)).join(''),
-            Lower = Upper.toLowerCase()
-        return {Lower: Lower.split(""), Upper: Upper.split("")}
+        const Upper = Array(26).fill(1).map((_, i)=>String.fromCharCode(65+i)),
+            Lower = Upper.map(i=>i.toLowerCase())
+        return {Lower: Lower, Upper: Upper}
     }()
 
     const Font = {
@@ -27,9 +27,6 @@
             "n*****": "nigger",
             "f***": "fuck"
         }
-        Object.keys(Words).forEach(i=>
-            Words[i+"*"] = Words[i]+"s"
-        )
         return Words
     }()
 
@@ -52,30 +49,33 @@
         return Text.join('')
     }
 
-    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
-        const Client = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        Client.lang = 'en-US';
-        Client.interimResults = false
+    window.onload = ()=>{
+        if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+            const Client = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            Client.lang = 'en-US';
+            Client.interimResults = false
 
-        Client.start()
-        Client.onresult = (event) => {
-            const Div = document.querySelector(".chat-container").childNodes[2]
-            
-            Div.click()
-            Div.value = GetText(event.results[0][0].transcript)
-            Div.dispatchEvent(new KeyboardEvent('keydown', {
-                key: 'Enter',
-                keyCode: 13,
-                which: 13,
-                bubbles: true,
-                cancelable: true,
-            }))
-        };
-        Client.onend = ()=>{
             Client.start()
+            Client.onresult = (event) => {
+                const Div = document.querySelector(".chat-container")?.childNodes[2]
+                if (!Div) return
+                
+                Div.click()
+                Div.value = GetText(event.results[0][0].transcript.toLowerCase())
+                Div.dispatchEvent(new KeyboardEvent('keydown', {
+                    key: 'Enter',
+                    keyCode: 13,
+                    which: 13,
+                    bubbles: true,
+                    cancelable: true,
+                }))
+            };
+            Client.onend = ()=>{
+                Client.start()
+            }
         }
+        else
+            alert('Speech recognition not supported')
     }
-    else
-        alert('Speech recognition not supported')
 
 })();
