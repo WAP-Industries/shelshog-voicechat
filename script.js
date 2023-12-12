@@ -76,8 +76,8 @@
 
 
     const Alpha = function(){
-    const Upper = Array(26).fill(1).map((_, i)=>String.fromCharCode(65+i)),
-    Lower = Upper.map(i=>i.toLowerCase())
+        const Upper = Array(26).fill(1).map((_, i)=>String.fromCharCode(65+i)),
+            Lower = Upper.map(i=>i.toLowerCase())
         return {Lower: Lower, Upper: Upper}
     }()
 
