@@ -99,7 +99,6 @@
     }
 
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
-        alert("shelshog voicechat started")
         Init()
 
         const Client = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
