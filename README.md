@@ -15,7 +15,7 @@
 If you're wondering why there's a bigass dictionary of buzzwords `script.js`, that's where `swearingiscool.py` comes in.  
 JavaScript's built-in speech recognition api is fucking gay, so it censors shit like "nigger" and "cunt".  
 So the solution was:
-- Take Roblox's buzzword file and decrypt it with `swearingiscool.py`, then modify it a lil bit
+- Take Roblox's buzzword file, decrypt and format it with `swearingiscool.py`, and modify it a lil bit
 - Then when converting the speech recognition output, just freestyle the decensoring
 ---
 
