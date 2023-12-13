@@ -67,9 +67,8 @@
     
         window.addEventListener("keyup", (e)=>{
             const Key = e.key.toLowerCase()
-            if (Object.keys(KeyBindings).includes(Key)){
+            if (Object.keys(KeyBindings).includes(Key)) 
                 KeyBindings[Key][1]()
-            }
         })
     }
 
