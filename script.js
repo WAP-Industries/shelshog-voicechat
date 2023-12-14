@@ -43,32 +43,38 @@
 
 
     const KeyBindings = {
-        "v": ["toggle voicechat", ()=>{
-            CanRecord = !CanRecord
-            Status.style.width = `${parseInt(Status.style.height, 10)*3}px`
-            DisplayMessage(Status, `Voicechat: ${["Off", "On"][+CanRecord]}`)
-            clearTimeout(HideStatus)
-            HideStatus = setTimeout(()=>Status.style.width = "0px", 2000)
-        }],
-        "h": ["show/hide commands", ()=>{
-            if (document.getElementById(Help.id)) Help.remove()
-            else document.body.appendChild(Help)
-
-            let Text = "== Shelshog Voicechat ==</br>"
-            for (const i of Object.keys(KeyBindings))
-                Text+=`</br>[${i}] to ${KeyBindings[i][0]}`
-            DisplayMessage(Help, Text)
-        }]
+        "Toggle": [
+            "v", 
+            "toggle voicechat",
+            ()=>{
+                CanRecord = !CanRecord
+                Status.style.width = `${parseInt(Status.style.height, 10)*3}px`
+                DisplayMessage(Status, `Voicechat: ${["Off", "On"][+CanRecord]}`)
+                clearTimeout(HideStatus)
+                HideStatus = setTimeout(()=>Status.style.width = "0px", 2000)
+            }
+        ],
+        "Help": [
+            "h", 
+            "show/hide commands",
+            ()=>{
+                if (document.getElementById(Help.id)) Help.remove()
+                else document.body.appendChild(Help)
+    
+                let Text = "== Shelshog Voicechat ==</br>"
+                for (const i of Object.values(KeyBindings))
+                    Text+=`</br>[${i[0]}] to ${i[1]}`
+                DisplayMessage(Help, Text)
+            }
+        ]
     }
 
     function Init(){
-        KeyBindings["h"][1]()
+        KeyBindings["Help"][2]()
         Array(Help, Status).forEach(i=>document.body.appendChild(i))
     
         window.addEventListener("keyup", (e)=>{
-            const Key = e.key.toLowerCase()
-            if (Object.keys(KeyBindings).includes(Key)) 
-                KeyBindings[Key][1]()
+            KeyBindings[Object.keys(KeyBindings).filter(i=>KeyBindings[i][0]==e.key.toLowerCase())[0]]?.[2]()
         })
     }
 
